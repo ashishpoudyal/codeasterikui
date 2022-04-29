@@ -1,22 +1,25 @@
-import 'package:design_task/screens/homescreens/app_bar_section.dart';
-import 'package:design_task/screens/homescreens/slidersection/slider_section.dart';
+import 'package:design_task/screens/rider_screen/rider_slider_section.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-import '../rider_screen/rider_screen.dart';
-import 'star_icon_section.dart';
+import '../homescreens/app_bar_section.dart';
+import '../homescreens/star_icon_section.dart';
 
-class HomePage extends StatelessWidget {
-  PanelController pc = new PanelController();
-  HomePage({Key? key}) : super(key: key);
+class NavigateToRiderScreen extends StatefulWidget {
+  const NavigateToRiderScreen({Key? key}) : super(key: key);
 
   @override
+  State<NavigateToRiderScreen> createState() => _NavigateToRiderScreenState();
+}
+
+class _NavigateToRiderScreenState extends State<NavigateToRiderScreen> {
+  @override
   Widget build(BuildContext context) {
+    PanelController pcc = PanelController();
     return Scaffold(
       body: SlidingUpPanel(
-          controller: pc,
+          controller: pcc,
           maxHeight: 500,
-          minHeight: 60,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20.0),
             topRight: Radius.circular(20.0),
@@ -25,7 +28,9 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 7),
                 controller: sc,
                 children: [
-                  SliderSection(pc: pc),
+                  RiderSliderSection(
+                    pcc: pcc,
+                  )
                 ],
               ),
           body: Container(
@@ -42,15 +47,6 @@ class HomePage extends StatelessWidget {
                   height: 25,
                 ),
                 StarIconSection(),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => NavigateToRiderScreen(),
-                          ));
-                    },
-                    child: Text("Client Screen"))
               ],
             ),
           )),

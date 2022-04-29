@@ -12,6 +12,7 @@ class SliderSection extends StatefulWidget {
 }
 
 class _SliderSectionState extends State<SliderSection> {
+  double rating = 1.0;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -69,7 +70,7 @@ class _SliderSectionState extends State<SliderSection> {
         //you are rated jhon doe section
 
         Text(
-          "You rated John Doe 4 stars",
+          "You rated John Doe " + rating.toString() + " stars",
           style: TextStyle(
               fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w600),
         ),
@@ -91,12 +92,15 @@ class _SliderSectionState extends State<SliderSection> {
             Icons.star,
             color: Colors.amber,
           ),
-          onRatingUpdate: (rating) {
-            print(rating);
+          onRatingUpdate: (ratings) {
+            setState(() {
+              rating = ratings;
+            });
+            print(ratings);
           },
         ),
         SizedBox(
-          height: 25,
+          height: 15,
         ),
 
         // say something about your experience
@@ -127,7 +131,7 @@ class _SliderSectionState extends State<SliderSection> {
         ),
 
         SizedBox(
-          height: 25,
+          height: 15,
         ),
 
         //ass a tip for john doe
@@ -143,7 +147,7 @@ class _SliderSectionState extends State<SliderSection> {
         // tips container
         TipsGridBuilder(),
         SizedBox(
-          height: 25,
+          height: 20,
         ),
 
         //Enter custom amount

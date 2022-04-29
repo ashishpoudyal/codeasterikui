@@ -10,6 +10,7 @@ class TipsGridBuilder extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(28, 0, 28, 0),
       child: GridView.builder(
+          physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               childAspectRatio: 45 / 40,
